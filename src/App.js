@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import MapComponent from './components/Map';
+import { cameras } from './data/cameras';
 
 function App() {
+  const [selectedCamera, setSelectedCamera] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ display: 'flex' }}>
+      <div style={{ flex: selectedCamera ? 1 : '100%' }}>
+        <MapComponent cameras={cameras} onMarkerClick={setSelectedCamera} />
+      </div>
+
+      {selectedCamera && (
+        <div style={{ width: 400, padding: 20, backgroundColor: '#f5f5f5', position: 'relative' }}>
+          <h2>{selectedCamera.name}</h2>
+          <video width="100%" controls autoPlay>
+            <source src={selectedCamera.videoUrl} type="application/x-mpegURL" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
     </div>
   );
 }
