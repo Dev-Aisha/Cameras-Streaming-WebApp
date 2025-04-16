@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MapComponent from './components/Map';
-import { cameras } from './data/cameras';
 
 function App() {
+  const [cameras, setCameras] = useState([]);
   const [selectedCamera, setSelectedCamera] = useState(null);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/cameras')
+      .then((res) => res.json())
+      .then((data) => setCameras(data))
+      .catch((err) => console.error('Failed to fetch cameras:', err));
+  }, []);
 
   return (
     <div style={{ display: 'flex' }}>

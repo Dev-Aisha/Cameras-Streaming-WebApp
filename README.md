@@ -53,7 +53,14 @@ Then make sure you are using the token inside `Map.js` like this:
 `mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN`;
 
 
-### 4. Start the development server
+### 4. Start the mock API server
+
+```bash
+npm run mock-api
+```
+
+### 5. Start the React app
 
 ```bash
 npm start
+```
