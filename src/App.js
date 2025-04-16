@@ -12,8 +12,8 @@ function App() {
       </div>
 
       {selectedCamera && (
-        <div style={{ width: 400, padding: 20, backgroundColor: '#f5f5f5', position: 'relative' }}>
-          <h2>{selectedCamera.name}</h2>
+        <div style={{ width: 400, padding: 20, backgroundColor: '#161616', position: 'relative' }}>
+          <h2 style={{ color: 'white' }}>{selectedCamera.name}</h2>
           <video width="100%" controls autoPlay>
             <source src={selectedCamera.videoUrl} type="application/x-mpegURL" />
             Your browser does not support the video tag.
